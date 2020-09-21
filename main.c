@@ -7,7 +7,7 @@
 void main_menu();
 void list_directory(const char* user_input_directory);
 void list_all_directories(const char* user_input_directory);
-void encrypt_decrypt();
+void encrypt_decrypt(int method);
 
 
 int main() {
@@ -16,6 +16,7 @@ int main() {
     char user_input_directory[100];
     char user_input[100];
     char *ptr;
+    int method = 0; //  encrypt = 0, decrypt = 1
 
 
 
@@ -42,8 +43,14 @@ int main() {
                 list_all_directories(user_input_directory);
                 break;
 
-             case 6:
-                encrypt_decrypt();
+            case 6:
+                method = 0;
+                encrypt_decrypt(method);
+                break;
+
+            case 7:
+                method = 1;
+                encrypt_decrypt(method);
                 break;
 
             default:
@@ -111,12 +118,15 @@ void list_all_directories(const char* user_input_directory) {
 
 
 
-void encrypt_decrypt() {
+void encrypt_decrypt(int method) {
 
     char password[256];
     char filename[100];
     FILE *input_file;
     FILE *output_file;
+
+
+    char output_file_name[100];
 
     printf("Please input a password.\n");
     fgets(password, sizeof(password), stdin);
@@ -126,8 +136,18 @@ void encrypt_decrypt() {
     fgets(filename, sizeof(filename), stdin);
     filename[strcspn(filename, "\n")] = 0;
 
+    if (method == 0){
+        strcpy(output_file_name, filename);
+        strcat(output_file_name, ".enc");
+    }
+    else if (method == 1){
+        char buffer[50];
+        int j = snprintf(buffer, strlen(filename) - 3, "%s", filename);
+        strcpy(output_file_name, buffer);
+    }
+//Qwertyuiop[123$4$567]
     input_file = fopen(filename, "rb");
-    output_file = fopen("C:\\Users\\drosarius\\CLionProjects\\file_system_hw5\\test5.pdf", "wb");
+    output_file = fopen(output_file_name, "wb");
 
     int c;
     int i = 0;
@@ -139,6 +159,8 @@ void encrypt_decrypt() {
         ++i;
         if ( i >= strlen(password) )   i = 0;
     }
+
+
     fclose(output_file);
     fclose(input_file);
 
