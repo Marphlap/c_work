@@ -23,7 +23,6 @@ int main() {
     DIR *selected_directory;
 
 
-
     while (user_selection != 0){
         main_menu();
         fgets(user_input, sizeof(user_input), stdin);
@@ -46,7 +45,7 @@ int main() {
                 break;
 
             case 2:
-                if (strcmp(user_input_directory, "ASCII") == 0){
+                if (strcmp(user_input_directory, "ASCII") == 0 || strlen((const char *) user_input_directory) == 0){
                     printf("Please input a directory\n");
                 }
                 else{
@@ -55,7 +54,7 @@ int main() {
                 break;
 
             case 3:
-                if (strcmp(user_input_directory, "ASCII") == 0){
+                if (strcmp(user_input_directory, "ASCII") == 0 || strlen((const char *) user_input_directory) == 0){
                     printf("Please input a directory\n");
                 }
                 else{
@@ -65,7 +64,7 @@ int main() {
                 break;
 
             case 4:
-                if (strcmp(user_input_directory, "ASCII") == 0){
+                if (strcmp(user_input_directory, "ASCII") == 0 || strlen((const char *) user_input_directory) == 0){
                     printf("Please input a directory\n");
                 }
                 else{
@@ -75,7 +74,7 @@ int main() {
                 break;
 
             case 5:
-                if (strcmp(user_input_directory, "ASCII") == 0){
+                if (strcmp(user_input_directory, "ASCII") == 0 || strlen((const char *) user_input_directory) == 0){
                     printf("Please input a directory\n");
                 }
                 else{
@@ -85,7 +84,7 @@ int main() {
                 break;
 
             case 6:
-                if (strcmp(user_input_directory, "ASCII") == 0){
+                if (strcmp(user_input_directory, "ASCII") == 0 || strlen((const char *) user_input_directory) == 0){
                     printf("Please input a directory\n");
                 }
                 else{
@@ -96,7 +95,7 @@ int main() {
                 break;
 
             case 7:
-                if (strcmp(user_input_directory, "ASCII") == 0){
+                if (strcmp(user_input_directory, "ASCII") == 0 || strlen((const char *) user_input_directory) == 0){
                     printf("Please input a directory\n");
                 }
                 else{
